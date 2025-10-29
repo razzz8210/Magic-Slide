@@ -8,9 +8,8 @@ const geistSans = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Silent Study Blocks",
-  description: "Manage your study sessions with silent study blocks",
-    generator: 'v0.app'
+  title: "MagicSlides - Smart Study Management",
+  description: "AI-powered study planner with smart scheduling, notifications & flashcard generation",
 }
 
 export default function RootLayout({

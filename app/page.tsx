@@ -29,9 +29,9 @@ export default function Home() {
   return (
     <main className="flex items-center justify-center min-h-screen bg-black">
       <div className="text-center max-w-md mx-auto px-4">
-        <h1 className="text-4xl font-bold mb-4 text-red-600">Silent Study Blocks</h1>
+        <h1 className="text-4xl font-bold mb-4 text-red-600">MagicSlides Study App</h1>
         <p className="text-lg text-gray-300 mb-8">
-          Manage your study sessions with focused, distraction-free study blocks
+          Smart study management with automated scheduling and email reminders
         </p>
         <div className="bg-gray-900 rounded-2xl shadow-xl p-2 transition-all duration-300 hover:shadow-2xl hover:shadow-red-700/50 hover:bg-gray-800">
           <GoogleLoginButton />

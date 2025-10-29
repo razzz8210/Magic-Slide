@@ -45,7 +45,7 @@ export default function Dashboard() {
               {user.name?.charAt(0).toUpperCase()}
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Silent Study Blocks</h1>
+              <h1 className="text-2xl font-bold text-gray-900">MagicSlides Study App</h1>
               <p className="text-sm text-gray-600">{user.email}</p>
             </div>
           </div>
