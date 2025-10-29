@@ -4,16 +4,10 @@ export async function POST(request: NextRequest) {
   try {
     const { googleId, email, name, picture } = await request.json()
 
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+    // Auto-detect backend URL: use env variable for local dev, or current domain for Vercel
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 
+                       `https://${request.headers.get('host')}`
     
-    if (!backendUrl) {
-      console.error("NEXT_PUBLIC_BACKEND_URL is not set")
-      return NextResponse.json(
-        { error: "Backend URL not configured. Please set NEXT_PUBLIC_BACKEND_URL in .env.local" },
-        { status: 500 }
-      )
-    }
-
     console.log(`Calling backend at: ${backendUrl}/api/auth/google`)
 
     const response = await fetch(`${backendUrl}/api/auth/google`, {

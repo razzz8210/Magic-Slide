@@ -1,10 +1,15 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000"
+// Auto-detect backend URL: use env variable for local dev, or self for Vercel
+function getBackendUrl(request: NextRequest): string {
+  return process.env.NEXT_PUBLIC_BACKEND_URL || 
+         `https://${request.headers.get('host')}`
+}
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const response = await fetch(`${BACKEND_URL}/api/study-blocks/${params.id}`)
+    const backendUrl = getBackendUrl(request)
+    const response = await fetch(`${backendUrl}/api/study-blocks/${params.id}`)
     const data = await response.json()
 
     if (!response.ok) {
@@ -21,7 +26,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   try {
     const body = await request.json()
 
-    const response = await fetch(`${BACKEND_URL}/api/study-blocks/${params.id}`, {
+    const backendUrl = getBackendUrl(request)
+    const response = await fetch(`${backendUrl}/api/study-blocks/${params.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +49,8 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
 export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   try {
-    const response = await fetch(`${BACKEND_URL}/api/study-blocks/${params.id}`, {
+    const backendUrl = getBackendUrl(request)
+    const response = await fetch(`${backendUrl}/api/study-blocks/${params.id}`, {
       method: "DELETE",
     })
 
